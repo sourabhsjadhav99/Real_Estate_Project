@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ".././App.css"
+import "./FormPage.css"
 function GeneralInfo({ formData, setFormData }) {
     let [mobileError, setmobileError] = useState(false);
     let phoneRegex = /^[+]?(\d{1,2})?[\s.-]?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;

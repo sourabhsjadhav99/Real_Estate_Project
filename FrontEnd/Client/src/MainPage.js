@@ -4,7 +4,12 @@ import { RiHome3Line } from "react-icons/ri";
 import { IoIosNotifications } from "react-icons/io";
 import { BsFillTagFill } from "react-icons/bs";
 import { GrFormView, GrUpload, GrDownload } from "react-icons/gr";
-import Form from "./Form"
+import { Routes, Route } from "react-router-dom";
+import Error from './componentss/Error';
+import FormPage from './componentss/Multistep_Form/FormPage';
+import DisplayData from './componentss/Searchbar_Table/DisplayData';
+import SignIn from "./componentss/SignIn_SignUp/SignIn"
+import SignUp from "./componentss/SignIn_SignUp/SignUp"
 function MainPage() {
   return (
     <div className='main-container'>
@@ -55,7 +60,13 @@ function MainPage() {
       <section>
         <header className='header'> </header>
         <main className='main'>
-          <Form/>
+        <Routes>
+          <Route path="/" element={<SignIn />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/display" element={<DisplayData />} />
+          <Route path="/form" element={<FormPage />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
         </main>
       </section>
 

@@ -1,4 +1,4 @@
-import ".././App.css"
+import "./FormPage.css"
 function BasicInfo({ formData, setFormData }) {
     let changeHandler = (e) => {
         let name = e.target.name;

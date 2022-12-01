@@ -1,4 +1,4 @@
-import ".././App.css"
+import "./FormPage.css"
 function LocationInfo({ formData, setFormData }) {
     let changeHandler=(e)=>{
         let name=e.target.name;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ".././App.css"
+import "./FormPage.css"
 function PropertyDetail({ formData, setFormData }) {
     let [areaError, setAreaError] = useState(false);
     let changeHandler=(e)=>{
