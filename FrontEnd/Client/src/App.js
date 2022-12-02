@@ -1,9 +1,21 @@
 import React from 'react'
-import MainPage from "./MainPage"
+import { Routes, Route } from "react-router-dom";
+import Error from './componentss/Error';
+import FormPage from './componentss/Multistep_Form/FormPage';
+import DisplayData from './componentss/Searchbar_Table/DisplayData';
+
+import SignIn from "./componentss/SignIn_SignUp/SignIn"
+import SignUp from "./componentss/SignIn_SignUp/SignUp"
 function App() {
   return (
     <div>
-      <MainPage />
+      <Routes>
+        <Route path="/" element={<SignIn />} />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/display" element={<DisplayData />} />
+        <Route path="/form" element={<FormPage />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
     </div>
 
 

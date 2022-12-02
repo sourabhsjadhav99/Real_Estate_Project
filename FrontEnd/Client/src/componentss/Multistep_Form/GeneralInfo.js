@@ -86,10 +86,10 @@ function GeneralInfo({ formData, setFormData }) {
                     <option value="China">China</option>
                 </select>
             </div>
-            <div className="input-box">
+            {/* <div className="input-box">
                 <label htmlFor="">Image:</label>
                 <input className="image" onChange={changeHandler} name="image" value={formData.image} type="file" />
-            </div>
+            </div> */}
 
         </div>
     );
