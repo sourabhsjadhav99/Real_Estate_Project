@@ -1,0 +1,41 @@
+.main-container{
+    width:1600px;
+    display: flex;
+    flex-direction: row;
+}
+.aside{
+    width:315px;
+    background-color: #E1F9F4;
+    text-align:justify;
+
+}
+.header{
+    height: 15vh;
+    width: 1285px;
+    background-color:#F5F5F5;
+    border-bottom: 5px solid #E1F9F4;
+
+}
+.main{
+    background-color: gray;
+    width: 1285px;
+}
+.logo{
+    color:#1A1B1C;
+    font-size: 25px;
+    font-weight: 700;
+    margin-left: 70px
+}
+.navvalue{
+   font-size: 22px;
+   color:#AAAAAA;
+   margin-bottom: 10px;
+   
+}
+.side-icon{
+    height: 20px;
+    color:#AAAAAA
+}
+span{
+    padding: 10px;
+}
