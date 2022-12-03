@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./FormPage.css"
 function GeneralInfo({ formData, setFormData }) {
     let [mobileError, setmobileError] = useState(false);
+    let [ppdIdError, setPpdIdError] = useState(false);
     let phoneRegex = /^[+]?(\d{1,2})?[\s.-]?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
     let changeHandler = (e) => {
         let name = e.target.name;
@@ -30,6 +31,13 @@ function GeneralInfo({ formData, setFormData }) {
                 setmobileError(false);
             }
         }
+        if (name === "ppdId") {
+            if (!value.length===7) {
+                setmobileError(true);
+            } else {
+                setmobileError(false);
+            }
+        }
     }
     return (
         <div className="user-details">
@@ -37,10 +45,8 @@ function GeneralInfo({ formData, setFormData }) {
                 <label htmlFor="">Name</label>
                 <select onChange={changeHandler} name="name" defaultValue={formData.name}>
                     <option value="" disable selected hidden>Name</option>
-                    <option value="India">India</option>
-                    <option value="USA">USA</option>
-                    <option value="UK">UK</option>
-                    <option value="China">China</option>
+                    <option value="abc">abc</option>
+                    <option value="xyz">xyz</option>
                 </select>
             </div>
             <div className="input-box">
@@ -52,39 +58,39 @@ function GeneralInfo({ formData, setFormData }) {
                 <label htmlFor="">Posted By</label>
                 <select onChange={changeHandler} name="postedBy" defaultValue={formData.postedBy}>
                     <option value="" disable selected hidden>Posted By</option>
-                    <option value="">1</option>
-                    <option value="India">2</option>
-                    <option value="USA">3</option>
+                    <option value="Owner">Owner</option>
+                    <option value="Agent">Agent</option>
+                    <option value="Others">Others</option>
                 </select>
             </div>
             <div className="input-box">
                 <label htmlFor="">Sale Type</label>
                 <select onChange={changeHandler} name="saleType" defaultValue={formData.saleType}>
                     <option value="" disable selected hidden>Please Select</option>
-                    <option value="">1</option>
-                    <option value="India">2</option>
-                    <option value="USA">3</option>
+                    <option value="Residential">Residential</option>
+                    <option value="Commertial">Commertial</option>
                 </select>
             </div>
             <div className="input-box">
                 <label htmlFor="">Featured Package</label>
                 <select onChange={changeHandler} name="featuredPackage" defaultValue={formData.featuredPackage}>
                     <option value="" disable selected hidden>Please Select</option>
-                    <option value="India">India</option>
-                    <option value="USA">USA</option>
-                    <option value="UK">UK</option>
-                    <option value="China">China</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                 </select>
             </div>
             <div className="input-box">
                 <label htmlFor="">PPD Package</label>
                 <select onChange={changeHandler} name="ppdPackage" defaultValue={formData.ppdPackage}>
                     <option value="" disable selected hidden>Please Select</option>
-                    <option value="India">India</option>
-                    <option value="USA">USA</option>
-                    <option value="UK">UK</option>
-                    <option value="China">China</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                 </select>
+            </div>
+            <div className="input-box">
+                <label htmlFor="">PPD ID:</label>
+                <input placeholder="Example-PPD1001" onChange={changeHandler} name="ppdId" value={formData.ppdId} type="text" required />
+                {ppdIdError ? <div className="error">Ligth must be 7</div> : ""}
             </div>
             {/* <div className="input-box">
                 <label htmlFor="">Image:</label>

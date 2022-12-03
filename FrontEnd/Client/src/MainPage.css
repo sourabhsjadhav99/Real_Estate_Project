@@ -1,3 +1,9 @@
+.main-box{
+    width:1600px;
+    display: flex;
+    flex-direction: row;
+}
+
 .main-container{
     display: flex;
  flex-direction: row;
@@ -9,15 +15,14 @@
 }
 
 .header{
+    display: flex;
+    justify-content: space-between;
+    padding:50px 30px ;
     height: 15vh;
     width: 1285px;
     background-color:#F5F5F5;
-    border-bottom: 5px solid #E1F9F4;
-}
-.main-box{
-    width:1600px;
-    display: flex;
-    flex-direction: row;
+    border-bottom: 7px solid #E1F9F4;
+    box-sizing: border-box;
 }
 
 .main{
@@ -36,7 +41,12 @@
    margin-bottom: 10px;
    
 }
+.icon{
+    margin-left: 40px;
+}
+
 .side-icon{
+    margin-bottom: 10px;
     height: 20px;
     color:#AAAAAA
 }
@@ -44,3 +54,6 @@ span{
     padding: 10px;
 }
 
+.blue-text{
+    color: #4C57B6;
+}

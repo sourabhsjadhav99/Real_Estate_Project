@@ -1,7 +1,9 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
 import Error from './componentss/Error';
+import Delete from './componentss/Multistep_Form/Delete';
 import FormPage from './componentss/Multistep_Form/FormPage';
+import View from './componentss/Multistep_Form/View';
 import DisplayData from './componentss/Searchbar_Table/DisplayData';
 
 import SignIn from "./componentss/SignIn_SignUp/SignIn"
@@ -14,6 +16,8 @@ function App() {
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/display" element={<DisplayData />} />
         <Route path="/form" element={<FormPage />} />
+        <Route path="/view/:id" element={<View />} />
+        <Route path="/edit/:id" element={<Delete />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>

@@ -7,6 +7,7 @@ import { TiTick } from "react-icons/ti";
 import "./FormPage.css"
 import { useNavigate } from "react-router-dom";
 import SideBar from "../../SideBar";
+import Header from "../Header";
 function FormPage() {
   const [complete, setComplete] = useState(false);
   const [page, setPage] = useState(0);
@@ -47,6 +48,7 @@ function FormPage() {
     landmark: "",
     lattitude: "",
     longitude: "",
+    ppdId:""
 
   });
 
@@ -78,7 +80,8 @@ function FormPage() {
     <div className="main-box">
       <SideBar />
       <section>
-        <header className='header'> </header>
+        {/* <header className='header'> </header> */}
+        <Header/>
         <div className="form-container">
           <div className="form-header">
             <h2 className="form-name">ADD NEW PROPERTY</h2>
@@ -99,30 +102,29 @@ function FormPage() {
 
               <div className="form-footer">
                 {page !== 0 ?
-                  <button type="submit" className="cancel-previous-button"
+                  <button
+                    className="cancel-previous-button"
                     onClick={(e) => {
                       e.preventDefault()
                       setPage((currPage) => currPage - 1);
                     }}
                   >
                     Previous
-                  </button> : <button type="submit" className="cancel-previous-button"
+                  </button> : <button
+                    className="cancel-previous-button"
                     onClick={(e) => {
-                      e.preventDefault()
                       navigation("/display")
                     }}
                   >
                     Cancel
                   </button>
                 }
-
                 <button
-                  type="submit"
                   className="save-button"
                   onClick={(e) => {
                     e.preventDefault()
                     if (page === FormTitles.length - 1) {
-                      if (formData.mobile && formData.propertyType && formData.totalArea) {
+                      if (formData.mobile && formData.propertyType && formData.totalArea && formData.ppdId.length===7) {
                         setComplete(true)
                         postData()
                         alert("FORM SUBMITTED");
@@ -130,7 +132,7 @@ function FormPage() {
                         console.log(formData);
                         navigation("/display")
                       } else {
-                        alert("Mobile, Property type and Total area are required fields");
+                        alert("Mobile, Property type, Total area, PPD id of length 7 are required fields");
                       }
                     } else {
 

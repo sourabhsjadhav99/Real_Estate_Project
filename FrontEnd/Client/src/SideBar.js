@@ -9,43 +9,43 @@ function SideBar() {
     <div className='main-container'>
       <aside className="aside">
         <h1 className='logo'>Logo</h1>
-        <div className="sideoption property">
-          <span className="home">
+        <div className=" side-icon ">
+          <span className="icon blue-text">
             <RiHome3Line />
           </span>
-          <span className="navvalue">Property</span>
+          <span className="navvalue blue-text">Property</span>
         </div>
 
         <div className="side-icon">
-          <span>
+          <span className="icon">
             <IoIosNotifications />
           </span>
           <span className="navvalue">Assistant</span>
         </div>
 
         <div className="side-icon">
-          <span className="colorgray">
+          <span className="icon">
             <GrDownload />
           </span>
           <span className="navvalue">Received Interest</span>
         </div>
 
         <div className="side-icon ">
-          <span className="colorgray">
+          <span className="icon">
             <GrUpload />
           </span>
           <span className="navvalue">Sent Interest</span>
         </div>
 
         <div className="side-icon">
-          <span>
+          <span className="icon">
             <GrFormView />
           </span>
           <span className="navvalue">Property View</span>
         </div>
 
         <div className="side-icon">
-          <span>
+          <span className="icon">
             <BsFillTagFill />
           </span>
           <span className="navvalue">Traffic Plan</span>
