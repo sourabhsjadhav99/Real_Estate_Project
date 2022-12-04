@@ -17,7 +17,7 @@ function Header() {
   return (
     <header className='header'>
         <div>PPDID</div>
-        <div>{data.email}</div>
+        <div>Sourabhsjadhav99@gmail.com</div>
          </header>
   )
 }
