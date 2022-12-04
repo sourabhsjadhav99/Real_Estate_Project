@@ -1,24 +1,34 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import "../MainPage.css"
+import { FiLogOut } from 'react-icons/fi'
 function Header() {
-  let [data, setData]=useState([])
-//   useEffect(() => {
-//     const fetchData = () => {
-//         fetch("/api/login")
-//             .then((response) => response.json())
-//             .then((data) => {
-//                 console.log(data)
-//                 setData(data);
-              
-//             });
-//     };
-//     fetchData();
-// }, []);
+  let [userId, setUserId] = useState()
+  let [ppdId, setPpdId] = useState()
+  useEffect(() => {
+    const fetchData = () => {
+      fetch("/api/signup")
+        .then((response) => response.json())
+        .then(function (response) {
+          console.log(response)
+          setUserId(response.email)
+          setPpdId(response.ppdId)
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });;
+    };
+    fetchData();
+  }, []);
+
+
+
+
   return (
     <header className='header'>
-        <div>PPDID</div>
-        <div>Sourabhsjadhav99@gmail.com</div>
-         </header>
+      <div>{ppdId}</div>
+      <div><span>{userId}</span><Link to="/"><FiLogOut /></Link></div>
+    </header>
   )
 }
 

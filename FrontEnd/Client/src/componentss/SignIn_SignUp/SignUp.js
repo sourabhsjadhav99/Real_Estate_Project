@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignIn.css"
 function SignUp() {
     let [emailError, setEmailError] = useState(false);
@@ -8,20 +8,50 @@ function SignUp() {
     let [password, setPassword] = useState();
     let [cPassword, setCPassword] = useState();
     let [cPasswordError, setCPasswordError] = useState(false);
-    function postData() {
-        fetch("/api/signup", {
+    let navigate= useNavigate()
+    // function postData() {
+    //     fetch("/api/signup", {
+    //       method: "POST",
+    //       body: JSON.stringify({
+    //         email,password
+    //       }),
+    //       headers: {
+    //         "Content-type": "application/json; charset=UTF-8"
+    //       }
+    //     })
+    //       .then(response => response.json())
+    //   }
+
+    function postData() 
+    {
+     
+        fetch("/api/signUp", {
           method: "POST",
           body: JSON.stringify({
-            email,password
+            email, password
           }),
           headers: {
             "Content-type": "application/json; charset=UTF-8"
           }
         })
           .then(response => response.json())
-      }
+      .then(function (response) 
+      {
+        console.log(response.message);
+        if (!response.message === "Email already exists") 
+        {alert("registered Succeful")
+            navigate('/')        
+        }else{
+            alert("Email already exists")
+        }  
+      })
+      .catch((error) => {
+  console.error('Error:', error);
+      }); 
+  
+    }
     let emailRegex =
-        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
     let emailHandler = (e) => {
         let value = e.target.value;
         if (!value.match(emailRegex)) {
@@ -45,12 +75,8 @@ function SignUp() {
     };
     let submitHandler = (e) => {
         e.preventDefault();
-        if (email && password && cPassword) {
-            postData()
-            alert("Succesfully registered")
-        } else {
-            alert("all fields necessary")
-        }
+        postData()
+   
     };
     return (
        <div className="sign-container">

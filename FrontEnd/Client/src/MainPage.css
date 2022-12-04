@@ -15,7 +15,6 @@
 }
 
 .header{
-    color:#B4B4C6;
     display: flex;
     justify-content: space-between;
     padding:50px 30px ;
@@ -32,29 +31,22 @@
 }
 .logo{
     color:#1A1B1C;
-    font-size: 25px;
+    font-size: 35px;
     font-weight: 700;
     margin-left: 70px
 }
 .navvalue{
    font-size: 22px;
    color:#AAAAAA;
-   margin-bottom: 10px;
    
 }
 .icon{
-    margin-left: 40px;
-}
-
-.side-icon{
-    margin-bottom: 10px;
-    height: 20px;
     color:#AAAAAA
 }
-span{
-    padding: 10px;
+.side-icon{
+    margin-bottom: 15px;
+    margin-left: 25px;
 }
-
 .blue-text{
     color: #4C57B6;
 }

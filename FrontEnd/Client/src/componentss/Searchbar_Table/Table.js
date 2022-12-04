@@ -8,7 +8,8 @@ function Table() {
     const [searchApiData, setSearchApiData] = useState([]);
     const [filterVal, setFilterval] = useState("");
     let [status, setStatus] = useState("Unsold")
-    let navigate = useNavigate()
+    let navigate = useNavigate([])
+   
 
     useEffect(() => {
         const fetchData = () => {
@@ -33,7 +34,7 @@ function Table() {
         }
         setFilterval(e.target.value);
     };
-    let clickHandler = (e) => {
+    let clickHandler = () => {
         setStatus("Sold")
     }
     let viewData = (id) => {
@@ -56,7 +57,7 @@ function Table() {
                             className='input-boxs'
                             placeholder="Search PPD Id"
                             value={filterVal}
-                            onInput={(e) => {
+                            onChange={(e) => {
                                 handleFilter(e);
                             }}
                         />

@@ -1,42 +1,15 @@
-
-
-
-
-//   // const login = (e) => {
-//   //   e.preventDefault();
-//   //   let DATA = {
-//   //     email: email,
-//   //     password: password
-//   //   }
-//   //   localStorage.setItem('userId', DATA.email)
-//   //   axios.post('/api/login', DATA)
-//   //     .then(function (response) {
-//   //       console.log(response.data.message);
-//   //       if (response.data.message === "success") {
-//   //         localStorage.setItem('token', response.data.token)
-//   //         navigate('/display')
-//   //       }
-//   //       else {
-//   //         alert(response.data.message)
-//   //       }
-//   //     })
-//   //     .catch(function (error) {
-//   //       console.log(error);
-//   //       alert('error')
-//   //     });
-// <button className="btn" onClick={login}>Login</button>
-
-
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import "./SignIn.css"
 
 function SignIn() {
+  let navigate = useNavigate();
   let [emailError, setEmailError] = useState(false);
   let [email, setEmail] = useState();
   let [password, setPassword] = useState();
-  let navigate = useNavigate()
   function postData() {
-    fetch("/api/signup", {
+
+    fetch("/api/login", {
       method: "POST",
       body: JSON.stringify({
         email, password
@@ -46,9 +19,21 @@ function SignIn() {
       }
     })
       .then(response => response.json())
+      .then(function (response) {
+        console.log(response);
+        if (response.message === "Login successful ") {
+          navigate('/display')
+        } else {
+          alert("user doesn't exists")
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
   }
   let emailRegex =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
   let emailHandler = (e) => {
     let value = e.target.value;
     if (!value.match(emailRegex)) {
@@ -62,18 +47,11 @@ function SignIn() {
   let passwordHandler = (e) => {
     setPassword(e.target.value);
   };
-  let submitHandler = (e) => {
+
+  let submitHandler = async (e) => {
     e.preventDefault();
-  //   localStorage.setItem('userId', email)
-  //   if (response.data.message === "success") {
-  //     localStorage.setItem('token', response.data.token)
-  //     postData()
-  //   }
-  //   else {
-  //     alert(response.data.message)
-  //   }
-  //   navigate('/display')
-  };
+    postData()
+  }
   return (
     <div className="sign-container">
       <form className="main-boxing" onSubmit={submitHandler}>
@@ -101,7 +79,6 @@ function SignIn() {
       </form>
 
     </div>
-  )
+  );
 }
-
-export default SignIn
+export default SignIn;

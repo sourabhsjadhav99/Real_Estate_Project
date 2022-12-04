@@ -124,7 +124,7 @@ function FormPage() {
                   onClick={(e) => {
                     e.preventDefault()
                     if (page === FormTitles.length - 1) {
-                      if (formData.mobile && formData.propertyType && formData.totalArea && formData.ppdId.length===7) {
+                      if (formData.mobile && formData.propertyType && formData.totalArea) {
                         setComplete(true)
                         postData()
                         alert("FORM SUBMITTED");
