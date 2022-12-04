@@ -14,9 +14,9 @@ function BasicInfo({ formData, setFormData }) {
     return (
         <div className="user-details" >
             <div className="input-box">
-                <label htmlFor="">Property Type</label>
+                <label htmlFor="propertyType">Property Type</label>
                 <select onChange={changeHandler} name="propertyType" defaultValue={formData.propertyType} >
-                    <option value="" disable selected hidden>Select Property Type</option>
+                    <option value="formData.propertyType" disable selected hidden>Select Property Type</option>
                     <option value="Flat">Flat</option>
                     <option value="Plot">Plot</option>
                     <option value="House">House</option>

@@ -1,9 +1,19 @@
 import React from 'react'
+import { Link} from 'react-router-dom'
+import SideBar from '../../SideBar'
+import Header from '../Header'
 import "./DisplayData.css"
+import Table from './Table'
+
 function DisplayData() {
   return (
-    <div>
-      <h1>Display Data</h1>
+    <div className="main-box">
+      <SideBar />
+      <div>
+        <Header/>
+        <Table/>
+        
+      </div>
     </div>
   )
 }
