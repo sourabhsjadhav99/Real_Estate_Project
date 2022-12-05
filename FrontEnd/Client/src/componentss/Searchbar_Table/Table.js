@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import "./DisplayData.css"
-import { FiSearch, FiEdit2, FiEye, FiImage } from 'react-icons/fi';
+import axios from "axios";
+import { FiSearch, FiEdit2, FiEye, FiImage, FiDelete } from 'react-icons/fi';
 function Table() {
 
     const [data, setData] = useState([]);
@@ -9,18 +10,19 @@ function Table() {
     const [filterVal, setFilterval] = useState("");
     let [status, setStatus] = useState("Unsold")
     let navigate = useNavigate([])
-   
 
+
+
+    const fetchData = () => {
+        fetch("/api/property")
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                setData(data);
+                setSearchApiData(data);
+            });
+    };
     useEffect(() => {
-        const fetchData = () => {
-            fetch("/api/property")
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(data)
-                    setData(data);
-                    setSearchApiData(data);
-                });
-        };
         fetchData();
     }, []);
     const handleFilter = (e) => {
@@ -37,16 +39,12 @@ function Table() {
     let clickHandler = () => {
         setStatus("Sold")
     }
-    let viewData = (id) => {
-        navigate(`/view/:${id}`)
-
-    }
-    let editData = (id) => {
-        // navigate("/form")
-
-    }
-    let deleteData=(id)=>{
-
+    function handleDelete(id) {
+        axios
+            .delete(`/api/property/${id}`)
+            .then(() => {
+                fetchData()
+            });
     }
     return (
         <div className="container">
@@ -70,11 +68,6 @@ function Table() {
                 </div>
                 <button className='property-button'><Link to="/form" className='link'>+ Add Property</Link></button>
             </div>
-
-
-
-
-
             <table className="table" >
                 <tr className="table-row">
                     <th>PPD ID</th>
@@ -99,9 +92,8 @@ function Table() {
                             <td><button className='status-button' onClick={clickHandler}>{status}</button></td>
                             <td>{parseInt(Math.random() * 50)}</td>
                             <td>
-                                <button className='action'  onClick={()=>{viewData(data.ppdId)}} ><FiEye className='table-icons' /></button>
-                            <button className='action' onClick={()=>{editData(data._id)}}><FiEdit2 className='table-icons' /></button>
-                            <button className='action' onClick={()=>{deleteData(data._id)}}>D</button>
+                                <Link to={`/view/${data.ppdId}`}><button className='action'><FiEye className='table-icons' /></button></Link>
+                                <button className='action' onClick={() => { handleDelete(data.ppdId) }}><FiDelete className='table-icons' /></button>
                             </td>
                         </tr>
                     );
@@ -110,5 +102,6 @@ function Table() {
         </div>
     );
 }
+
 
 export default Table

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link} from 'react-router-dom'
 import SideBar from '../../SideBar'
 import Header from '../Header'
 import "./DisplayData.css"
@@ -12,7 +11,6 @@ function DisplayData() {
       <div>
         <Header/>
         <Table/>
-        
       </div>
     </div>
   )

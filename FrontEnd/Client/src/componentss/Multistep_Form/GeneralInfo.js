@@ -87,11 +87,6 @@ function GeneralInfo({ formData, setFormData }) {
                     <option value="No">No</option>
                 </select>
             </div>
-            <div className="input-box">
-                <label htmlFor="">PPD ID:</label>
-                <input placeholder="Example-PPD1001" onChange={changeHandler} name="ppdId" value={formData.ppdId} type="text" required />
-                {ppdIdError ? <div className="error">Ligth must be 7</div> : ""}
-            </div>
             {/* <div className="input-box">
                 <label htmlFor="">Image:</label>
                 <input className="image" onChange={changeHandler} name="image" value={formData.image} type="file" />
