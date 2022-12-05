@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 const productSchema = mongoose.Schema({
-  prpertyType: { type: Array, required: true },
+  propertyType: { type: Array, required: true },
   Negotable: { type: Array },
   price: { type: Number },
   ownership: { type: Array },
-  PropertyAge: { type: Array },
-  PropertyApproved: { type: Array },
-  ProperyDescription: { type: String },
-  BankLoan: { type: Array },
+  propertyAge: { type: Array },
+  propertyApproved: { type: Array },
+  properyDescription: { type: String },
+  bankLoan: { type: Array },
   length: { type: Number },
   bredth: { type: Number },
   totalArea: { type: Number, required: true },
@@ -27,17 +27,16 @@ const productSchema = mongoose.Schema({
   saleType: { type: Array },
   featuredPackage: { type: Array },
   ppdPackage: { type: Array },
-  image: { type: String },
+  image: { data: Buffer, contentType: String },
   email: { type: String },
   city: { type: Array },
   area: { type: Array },
   pincode: { type: Array },
-  address: { type: String },
+  address: { type: String }, 
   landmark: { type: String },
   lattitude: { type: String },
   longitude: { type: String },
-  views: { type: Number },
-  status: { type: String },
-  dayleft: { type: Number }
+  ppdId:{type: String , unique:true}
+  
 });
 module.exports = mongoose.model("Properties", productSchema);

@@ -7,7 +7,7 @@ require("./connectionAndSchema/config");
  
 
 app.use("/api/property",formRoutes)
-app.use("/api/user",loginRoutes)
+app.use("/api",loginRoutes)
   app.listen(port, () => console.log(`App listening on port ${port}!`));
 
   module.exports = app;
