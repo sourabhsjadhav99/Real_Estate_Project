@@ -1,33 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import { Link} from 'react-router-dom'
 import "../MainPage.css"
 import { FiLogOut } from 'react-icons/fi'
+
+
 function Header() {
-  let [userId, setUserId] = useState()
-  let [ppdId, setPpdId] = useState()
-  useEffect(() => {
-    const fetchData = () => {
-      fetch("/api/signup")
-        .then((response) => response.json())
-        .then(function (response) {
-          console.log(response)
-          setUserId(response.email)
-          setPpdId(response.ppdId)
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });;
-    };
-    fetchData();
-  }, []);
-
-
-
-
+  let userid="sourabh@123.com  "
   return (
     <header className='header'>
-      <div>{ppdId}</div>
-      <div><span>{userId}</span><Link to="/"><FiLogOut /></Link></div>
+      <div>{`PPD${1000+parseInt(Math.random()*1000)}`}</div> 
+
+    <div><span>{userid}</span><abbr title="Logout"><Link to="/"><FiLogOut /></Link></abbr></div>
     </header>
   )
 }

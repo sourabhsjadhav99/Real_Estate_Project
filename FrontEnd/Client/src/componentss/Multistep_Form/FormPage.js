@@ -48,7 +48,8 @@ function FormPage() {
     landmark: "",
     lattitude: "",
     longitude: "",
-    ppdId:""
+    ppdId:"",
+    status:""
 
   });
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
 import Error from './componentss/Error';
+import Header from './componentss/Header';
 import FormPage from './componentss/Multistep_Form/FormPage';
 import View from './componentss/Multistep_Form/View';
 import DisplayData from './componentss/Searchbar_Table/DisplayData';
@@ -11,7 +12,9 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<SignIn />} />
+        <Route path="/" element={<SignIn />} >
+          <Route path=":email" element={<Header/>}/>
+        </Route>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/display" element={<DisplayData />} />
         <Route path="/form" element={<FormPage />} />

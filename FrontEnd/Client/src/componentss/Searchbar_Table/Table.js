@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import "./DisplayData.css"
 import axios from "axios";
-import { FiSearch, FiEdit2, FiEye, FiImage, FiDelete } from 'react-icons/fi';
+import { FiSearch, FiEye, FiImage, FiDelete } from 'react-icons/fi';
 function Table() {
 
     const [data, setData] = useState([]);
     const [searchApiData, setSearchApiData] = useState([]);
     const [filterVal, setFilterval] = useState("");
-    let [status, setStatus] = useState("Unsold")
-    let navigate = useNavigate([])
+    let [status, setStatus]=useState("unsold")
+    let navigate = useNavigate()
 
 
 
@@ -36,15 +36,17 @@ function Table() {
         }
         setFilterval(e.target.value);
     };
-    let clickHandler = () => {
-        setStatus("Sold")
-    }
+
     function handleDelete(id) {
         axios
             .delete(`/api/property/${id}`)
             .then(() => {
                 fetchData()
             });
+    }
+    function handleStatus () {
+        setStatus("Sold")
+        
     }
     return (
         <div className="container">
@@ -89,7 +91,7 @@ function Table() {
                             <td>{data.mobile}</td>
                             <td>{data.totalArea}</td>
                             <td>{parseInt(Math.random() * 50)}</td>
-                            <td><button className='status-button' onClick={clickHandler}>{status}</button></td>
+                            <td><button className='status-button' onClick={() => { handleStatus() }}>{status}</button></td>
                             <td>{parseInt(Math.random() * 50)}</td>
                             <td>
                                 <Link to={`/view/${data.ppdId}`}><button className='action'><FiEye className='table-icons' /></button></Link>
