@@ -48,7 +48,8 @@ router.post("/signup", body('email').isEmail(),
 
                 const user = await User.create({
                     email,
-                    password: hash
+                    password: hash,
+                    ppdId:`PPD${1000+Math.floor(Math.random()*1000)}`
                 })
                 return res.json({
                     status: "success",
@@ -124,5 +125,15 @@ router.post("/login", body('email').isEmail(), async (req, res) => {
     }
 });
 
-
+router.get("/login/:email", async(req, res) => {
+    try {
+      let data = await User.find({email:req.params.email});
+      res.send(data);
+    } catch (e) {
+      res.status(404).json({
+        status: "Failed",
+        message: e.message,
+      });
+    }
+  });
 module.exports = router;

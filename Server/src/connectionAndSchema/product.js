@@ -36,7 +36,8 @@ const productSchema = mongoose.Schema({
   landmark: { type: String },
   lattitude: { type: String },
   longitude: { type: String },
-  ppdId:{type: String , unique:true}
+  ppdId:{type: String , unique:true},
+  status:{type:String, default:"Unsold"}
   
 });
 module.exports = mongoose.model("Properties", productSchema);

@@ -35,7 +35,7 @@ router.get("/:id", async(req, res) => {
 router.post("/", async (req, res) => {
     try {
       const id =` PPD${1000+Math.floor(Math.random()*1000)}`;
-      let data = await Product.create({...req.body, ppdId:id})
+      let data = await Product.create({...req.body, ppdId:id, status:"Unsold"})
       res.send(data);
       console.log(data);
     } catch (e) {
