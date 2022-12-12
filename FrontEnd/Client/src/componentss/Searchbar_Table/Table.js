@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import "./DisplayData.css"
 import axios from "axios";
 import { FiSearch, FiEye, FiImage, FiDelete } from 'react-icons/fi';
@@ -10,6 +10,7 @@ function Table() {
     const [filterVal, setFilterval] = useState("");
     let [status, setStatus]=useState("unsold")
     let navigate = useNavigate()
+    let {email} =useParams()
 
 
 
@@ -17,7 +18,6 @@ function Table() {
         fetch("/api/property")
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
                 setData(data);
                 setSearchApiData(data);
             });
@@ -68,7 +68,7 @@ function Table() {
                         return <div key={index}>{data.ppdId}</div>;
                     }) : ""} */}
                 </div>
-                <button className='property-button'><Link to="/form" className='link'>+ Add Property</Link></button>
+                <button className='property-button'><Link to={`/form/${email}`} className='link'>+ Add Property</Link></button>
             </div>
             <table className="table" >
                 <tr className="table-row">

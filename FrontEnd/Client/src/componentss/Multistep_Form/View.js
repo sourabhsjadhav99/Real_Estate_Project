@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import SideBar from '../../SideBar';
-import Header from '../Header';
+
 
 function View() {
 
@@ -28,9 +28,8 @@ function View() {
   return (
     <div className="main-box" >
       <SideBar />
-      <div>
-        <Header />
-        <div style={{ background: "#F5F5F5" }}>
+      <div >
+        <div style={{ background: "#F5F5F5",width:"80vw", height:"100vh" }}>
           <h1 style={{ textAlign: "center", marginTop: 0 }}>Property Details</h1>
           <div style={{ display: "flex", justifyContent: "space-evenly", fontSize: "22px" }}>
             <div>

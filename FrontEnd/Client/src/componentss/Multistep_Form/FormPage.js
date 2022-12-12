@@ -5,7 +5,7 @@ import LocationInfo from "./LocationInfo";
 import PropertyDetail from "./PropertyDetail";
 import { TiTick } from "react-icons/ti";
 import "./FormPage.css"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SideBar from "../../SideBar";
 import Header from "../Header";
 function FormPage() {
@@ -52,7 +52,7 @@ function FormPage() {
     status:""
 
   });
-
+let {email}= useParams()
   function postData() {
     fetch("/api/property", {
       method: "POST",
@@ -114,7 +114,7 @@ function FormPage() {
                   </button> : <button
                     className="cancel-previous-button"
                     onClick={(e) => {
-                      navigation("/display")
+                      navigation(`/display/${email}`)
                     }}
                   >
                     Cancel
@@ -131,7 +131,7 @@ function FormPage() {
                         alert("FORM SUBMITTED");
                         console.log(formData.mobile, formData.propertyType, formData.totalArea)
                         console.log(formData);
-                        navigation("/display")
+                        navigation(`/display/${email}`)
                       } else {
                         alert("Mobile, Property type, Total area, PPD id of length 7 are required fields");
                       }

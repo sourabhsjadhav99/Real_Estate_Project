@@ -1,16 +1,28 @@
-import React from 'react'
-import { Link} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useParams} from 'react-router-dom'
 import "../MainPage.css"
 import { FiLogOut } from 'react-icons/fi'
 
 
 function Header() {
+  let {email} = useParams()
+  let [data, setData]=useState({})
+  const fetchData = () => {
+    fetch(`/api/login/${email}`)
+        .then((response) => response.json())
+        .then((data) => {
+            setData(data[0]);
+        });
+};
+useEffect(() => {
+    fetchData();
+}, []);
   let userid="sourabh@123.com  "
   return (
     <header className='header'>
-      <div>{`PPD${1000+parseInt(Math.random()*1000)}`}</div> 
+      <div>{data.ppdId}</div> 
 
-    <div><span>{userid}</span><abbr title="Logout"><Link to="/"><FiLogOut /></Link></abbr></div>
+    <div><span>{data.email}</span><abbr title="Logout"><Link to="/"><FiLogOut /></Link></abbr></div>
     </header>
   )
 }

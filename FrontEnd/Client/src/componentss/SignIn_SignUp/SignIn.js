@@ -22,7 +22,7 @@ function SignIn() {
       .then(function (response) {
         console.log(response);
         if (response.message === "Login successful ") {
-          navigate('/display')
+          navigate(`/display/${email}`)
         } else {
           alert("user doesn't exists")
         }

@@ -16,8 +16,8 @@ function App() {
           <Route path=":email" element={<Header/>}/>
         </Route>
         <Route path="/signUp" element={<SignUp />} />
-        <Route path="/display" element={<DisplayData />} />
-        <Route path="/form" element={<FormPage />} />
+        <Route path="/form/:email" element={<FormPage />} />
+        <Route path="/display/:email" element={<DisplayData />} />
         <Route path="/view/:ppdId" element={<View />} />
         <Route path="*" element={<Error />} />
       </Routes>
